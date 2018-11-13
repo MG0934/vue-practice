@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>v-bind</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind 实例</h1>
+    <hr>
+    <div id="app">
+            绑定image 标准写法
+           <p> 
+               <img v-bind:src="imgSrc"  width="200px">
+           </p>
+           <hr>
+            绑定image 缩写用法
+           <p> 
+                <img :src="imgSrc"  width="200px">
+            </p>
+            <hr>
+            <p>
+                <div :class="className">绑定class</div>
+            </p>
+            <hr>
+            <p>
+                    <div :class="{classC:isTrueOK}">绑定class,判断 isTrueOK</div>
+                    <div :class="{classC:isFalseOk}">绑定class,判断 isTrueOK</div>
+            </p>
+
+            <div>
+                <input type="checkbox" id="isTrueOK" v-model="isTrueOK">
+                <label for="isTrueOK">isTrueOK</label>
+                <input type="checkbox" id="isFalseOk" v-model="isFalseOk">
+                <label for="isFalseOk">isFalseOk</label>
+            </div>
+            <hr>
+           
+            <div :class="[classA,classB]"> 绑定多个class ，数组形式</div>
+            
+            <hr>
+
+            <div :class="isSanYuan?classA:classB"> 三元运算符</div>
+            <input type="checkbox" id="isSanYuan" v-model="isSanYuan">
+            <label for="isSanYuan">{{isSanYuan}}</label>
+
+            <hr>
+            <div :style="{color:color,fontSize:font}">style 样式绑定</div>
+
+            <hr>
+            <div :style="styleObject">style 样式绑定 对象形式绑定</div>
+    </div>
+    
+    <script type="text/javascript">
+            
+        var app = new Vue({
+            el: "#app",
+            data:{
+                imgSrc:'http://photo.16pic.com/00/50/63/16pic_5063886_b.jpg',
+                className: 'classA',
+                isTrueOK: true,
+                isFalseOk: false,
+                classA:"classA",
+                classB:"classB",
+                isSanYuan: true,
+                color:'green',
+                font: '44px',
+                styleObject:{
+                    color:"blue",
+                    fontSize:"34px"
+                }
+            }
+        })
+        
+    </script>
+    <style>
+        .classA{
+            color: red
+        }
+
+        .classB{
+            font-size: 150%
+        }
+        .classC{
+            color: red;
+            font-size: 150%
+        }
+    </style>
+</body>
+</html>
