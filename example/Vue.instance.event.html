@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.instance.event</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.instance.event 实例</h1>
+    <hr>
+    <div id="app">
+        <h3>{{num}}</h3>
+        <p><button @click="add">ADD</button></p>
+    </div>
+
+    <p><button onClick="reduce()">reduce</button></p>
+    
+    <script type="text/javascript">
+            
+        var app = new Vue({
+            el: "#app",
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        })
+
+        app.$on('reduce',function(){
+            console.log('执行了reduce()');
+            this.num--;
+        })
+        
+        app.$once('reduceOnce',function(){
+            console.log('只执行一次的方法');
+            this.num--;
+        });
+
+        function off(){
+            app.$off('reduce');
+        }
+
+        function reduce(){
+            app.$emit("reduceOnce")
+        }
+
+    </script>
+
+</body>
+</html>

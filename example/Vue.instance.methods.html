@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.instance.methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../asssets/js/jquery-3.3.1.js"></script>
+    
+</head>
+
+<body>
+    <h1>Vue.instance.methods 实例</h1>
+    <hr>
+    <div id="app">
+
+    </div>
+    <p><button onclick="destroy()">卸载</button></p>
+    <p><button onclick="flush()">更新</button></p>
+    <p><button onclick="tick()">更新反馈</button></p>
+    <script type="text/javascript">
+        var mooq = Vue.extend({
+            template: `
+            <p>{{message}}</p>
+            `,
+            data: function () {
+                return {
+                    message: 'Hello ,I am mooq'
+                }
+            },
+            destroyed: function () {
+                console.log("被卸载了··")
+            },
+            updated: function () {
+                console.log("更新后··")
+            }
+        })
+
+        var vm = new mooq().$mount("#app");
+        function destroy() {
+            vm.$destroy();
+        }
+        function flush() {
+            vm.$forceUpdate();
+        }
+        function tick() {
+            vm.message = "update message info ";
+            vm.$nextTick(function () {
+                console.log('message更新完后我被调用了');
+            })
+        }
+    </script>
+
+</body>
+
+</html>
