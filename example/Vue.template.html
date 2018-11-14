@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue template</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue template 实例</h1>
+    <hr>
+    <div id="app">
+        <h3>{{message}}</h3>
+    </div>
+
+    <template id="dd2">
+        <h1 style="color:red">我是template，标签模板</h1>
+    </template>
+
+    <script type="x-template" id="dd3">
+        <h1 style="color:red">我是script，标签模板</h1>
+    </script>
+    
+    <script type="text/javascript">
+            
+        var app = new Vue({
+            el: "#app",
+            data:{
+                message:"Vue template!"
+            },
+            //第三种形式可以进行外部引用
+            template:"#dd3"
+
+            //第二种模板，使用于切好的代码,缺点，页面不清晰
+            //template:"#dd2"
+
+            //第一种模板，适用于很小的代码量的模板
+            // template:`
+            //     <h1 style="color:red">我是选项模板</h1>
+            // `
+        })
+    </script>
+
+</body>
+</html>

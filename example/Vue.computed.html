@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.computed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Vue.computed 实例</h1>
+        <hr>
+        <h3>格式化输出结果</h3>
+        原价格
+        <p>{{price}}</p>
+        computed价格
+        <p>{{newPrice}}</p>
+        <hr>
+        <h3>操作数组对象</h3>
+        原数据
+        <p>{{newList}}</p>
+        computed数据,反转
+        <p>{{reversenewLiset}}</p>
+    </div>
+
+    <script type="text/javascript">
+
+        var newList=[
+            {1:1},{2:2},{3:3},{4:4}
+        ]
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                price: "500",
+                newList:newList
+            },
+            computed: {
+                newPrice: function () {
+                    return this.price = "￥" + this.price + "元"
+                },
+                reversenewLiset:function(){
+                    return this.newList.reverse();
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

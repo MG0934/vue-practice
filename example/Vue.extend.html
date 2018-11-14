@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.extend</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.extend 实例</h1>
+    <hr>
+    <p>扩展实例构造器</p>
+    <author id="author"></author>
+    
+    <author></author>
+
+    <script type="text/javascript">
+
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+            data:function(){
+                return {
+                    authorName: 'mooq',
+                    authorURL: 'http://www.baidu.com'
+                }
+            }
+        });
+        
+        new authorExtend().$mount('#author')
+
+        new authorExtend().$mount('author')
+
+    </script>
+
+</body>
+</html>

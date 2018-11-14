@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.Component.props</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.Component.props 实例</h1>
+    <hr>
+    <div id="app">
+        <p>不带-命名组件传值,绑定</p>
+       <bird v-bind:here="message"></bird>
+       <hr>
+       <p>带-命名组件传值,绑定</p>
+       <panda v-bind:from-here="message"></panda>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data:{
+                message:'china'
+            },
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">Panda form {{fromHere}} </div>`,
+                    props:[
+                        'fromHere'
+                    ]
+                },
+                "bird":{
+                    template:`<div style="color:red;">Panda form {{here}} </div>`,
+                    props:[
+                        "here"
+                    ]
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

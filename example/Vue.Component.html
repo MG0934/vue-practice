@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.Component</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.Component 实例</h1>
+    <hr>
+    <div id="app">
+       全局APP <mooq></mooq>
+       局部panda<panda></panda>
+    </div>
+
+    <div id="app_two">
+       全局APP_TWO <mooq></mooq>
+    </div>
+
+    <script type="text/javascript">
+
+        Vue.component('mooq',{
+            template:`<div style="color:red;">全局化注册的mooq标签</div>`
+        })
+            
+        var app = new Vue({
+            el: "#app",
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">我是局部的panda组件</div>`
+                }
+            }
+        })
+        
+        var app_two = new Vue({
+            el:"#app_two"
+        })
+
+    </script>
+
+</body>
+</html>
