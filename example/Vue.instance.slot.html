@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.instance.event</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.instance.event 实例</h1>
+    <hr>
+    <div id="app">
+        <mooq>
+            <span slot="bolgUrl">{{mooq.bolgUrl}}</span>
+            <span slot="netName">{{mooq.netName}}</span>
+            <span slot="skill">{{mooq.skill}}</span>
+        </mooq>
+    </div>
+
+    <template id='tmp'>
+        <div>
+            <p>博客地址：<slot name="bolgUrl"></slot></p>
+            <p>网名：<slot name="netName"></slot></p>
+            <p>技术类型：<slot name="skill"></slot></p>
+        </div>
+    </template>
+    
+    <script type="text/javascript">
+
+        var mooq = {
+            template:'#tmp'
+        }
+            
+        var app = new Vue({
+            el: "#app",
+            data:{
+                mooq:{
+                    bolgUrl:'http://tryrun.com',
+                    netName:'mooq',
+                    skill:'web front'
+                }
+            },
+            components:{
+                "mooq":mooq
+            }
+        })
+    </script>
+
+</body>
+</html>
